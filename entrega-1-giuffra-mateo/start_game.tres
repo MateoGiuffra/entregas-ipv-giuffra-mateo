@@ -1,0 +1,4 @@
+[gd_resource type="InputEventAction" format=3 uid="uid://c5vy7wd0ofqn2"]
+
+[resource]
+action = &"start_game"
