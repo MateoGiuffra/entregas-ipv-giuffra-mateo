@@ -5,9 +5,8 @@ var direction = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	if direction != Vector2.ZERO:
-		position += direction * speed * delta  # mueve el proyectil
+		position += direction * speed * delta 
 
-	# destruir si sale de la pantalla
 	var screen_size = get_viewport_rect().size
 	if position.x < 0 or position.y < 0 or position.x > screen_size.x or position.y > screen_size.y:
 		queue_free()

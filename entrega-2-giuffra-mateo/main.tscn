@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(2123, 58)
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" groups=["enemies"]]
 script = ExtResource("1_0xm2m")
 enemy_scene = ExtResource("5_lquwl")
 

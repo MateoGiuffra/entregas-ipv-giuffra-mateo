@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://mpn3vqlh4d3k"]
+[gd_scene load_steps=4 format=3 uid="uid://mpn3vqlh4d3k"]
 
 [ext_resource type="Texture2D" uid="uid://dnd2cb6jdlxvm" path="res://assets/cuphead-character/Arm/arm.png" id="1_5qy1j"]
 [ext_resource type="Script" uid="uid://7o3203fkcvtp" path="res://arm.gd" id="1_m8ymp"]
+[ext_resource type="PackedScene" uid="uid://ctwr3562w4h32" path="res://enemies/projectile/Projectile.tscn" id="2_wbqlu"]
 
 [node name="Arm" type="Node2D"]
 script = ExtResource("1_m8ymp")
+projectile_scene = ExtResource("2_wbqlu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(36, -2)

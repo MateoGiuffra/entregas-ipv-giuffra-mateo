@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var speed := 400
-var facing_right := true
-var screen_size := Vector2.ZERO
+@export var speed = 400
+var facing_right = true
+var screen_size = Vector2.ZERO
 
 func start(pos):
 	position = pos
@@ -14,7 +14,7 @@ func can_shoot():
 	return Input.is_action_just_pressed("shoot")
 
 func _process(delta: float) -> void:
-	var velocity := Vector2.ZERO
+	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 		facing_right = true
@@ -29,12 +29,12 @@ func _process(delta: float) -> void:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.animation = "run"
 		$AnimatedSprite2D.play()
-		$Arm.hide_arm()
 	else:
 		$AnimatedSprite2D.animation = "idle"
-		$Arm.hide_arm()
 		$AnimatedSprite2D.play()
 
+	$Arm.hide_arm()
+	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	$AnimatedSprite2D.flip_h = not facing_right

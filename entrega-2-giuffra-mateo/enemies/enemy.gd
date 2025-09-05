@@ -12,7 +12,7 @@ var target = null
 func _ready():
 	$AnimatedSprite2D.play()
 	time_until_next_shot = randf_range(fire_rate_min, fire_rate_max)
-	z_index = 1  # enemigo encima de los proyectiles
+	z_index = 1 
 
 func _process(delta: float) -> void:
 	time_until_next_shot -= delta
