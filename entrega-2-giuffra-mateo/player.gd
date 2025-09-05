@@ -11,7 +11,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 func can_shoot():
-	return Input.is_action_just_pressed("shoot")
+	return Input.is_action_just_pressed("shoot") && $AnimatedSprite2D.animation == "up"
 
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
