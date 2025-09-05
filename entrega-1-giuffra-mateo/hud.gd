@@ -9,6 +9,7 @@ func show_message(text):
 
 
 func show_game_over():
+	
 	show_message("Game Over")
 	await $MessageTimer.timeout
 	$Message.text = "Dodge the\nCreeps"

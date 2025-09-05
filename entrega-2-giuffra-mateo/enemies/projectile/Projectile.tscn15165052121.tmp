@@ -1,0 +1,86 @@
+[gd_scene load_steps=17 format=3 uid="uid://ctwr3562w4h32"]
+
+[ext_resource type="Texture2D" uid="uid://rp8iox4ngrb1" path="res://assets/shots/Bullet/Comet/Shot VFX/A/crack_bullet_VFX_a_0001.png" id="1_w2nu0"]
+[ext_resource type="Script" uid="uid://c74xmgl36ebn7" path="res://enemies/projectile/projectile.gd" id="1_yv6a6"]
+[ext_resource type="Texture2D" uid="uid://moaw30ih54md" path="res://assets/shots/Bullet/Comet/Shot VFX/A/crack_bullet_VFX_a_0002.png" id="2_yv6a6"]
+[ext_resource type="Texture2D" uid="uid://hjj51syjyhdh" path="res://assets/shots/Bullet/Comet/Shot VFX/A/crack_bullet_VFX_a_0003.png" id="3_35aqj"]
+[ext_resource type="Texture2D" uid="uid://b710tgtktx1ro" path="res://assets/shots/Bullet/Comet/Shot VFX/A/crack_bullet_VFX_a_0004.png" id="4_l576s"]
+[ext_resource type="Texture2D" uid="uid://bgvbr8pq6d8kt" path="res://assets/shots/Bullet/Comet/Shot VFX/A/crack_bullet_VFX_a_0005.png" id="5_5pufl"]
+[ext_resource type="Texture2D" uid="uid://cwqjisct7urhv" path="res://assets/shots/Bullet/Comet/Shot VFX/A/crack_bullet_VFX_a_0006.png" id="6_ijbih"]
+[ext_resource type="Texture2D" uid="uid://birysog5frr5x" path="res://assets/shots/Bullet/Comet/Shot VFX/A/crack_bullet_VFX_a_0007.png" id="7_6kp08"]
+[ext_resource type="Texture2D" uid="uid://ytd6bsf5oldc" path="res://assets/shots/Bullet/Comet/Idle/A/crack_comet_a_0001.png" id="8_toon6"]
+[ext_resource type="Texture2D" uid="uid://ygeyabbo3ugk" path="res://assets/shots/Bullet/Comet/Idle/A/crack_comet_a_0002.png" id="9_v1770"]
+[ext_resource type="Texture2D" uid="uid://fe8chtrnnyn7" path="res://assets/shots/Bullet/Comet/Idle/A/crack_comet_a_0003.png" id="10_j8awi"]
+[ext_resource type="Texture2D" uid="uid://6p0uh1msgx8v" path="res://assets/shots/Bullet/Comet/Idle/A/crack_comet_a_0004.png" id="11_whgch"]
+[ext_resource type="Texture2D" uid="uid://bdnrcyucjpshq" path="res://assets/shots/Bullet/Comet/Idle/A/crack_comet_a_0005.png" id="12_7hrak"]
+[ext_resource type="Texture2D" uid="uid://cica5n4yfvikj" path="res://assets/shots/Bullet/Comet/Intro/A/crack_comet_a_intro_0002.png" id="13_1tk07"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1we0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w2nu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yv6a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_35aqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l576s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5pufl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ijbih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6kp08")
+}],
+"loop": true,
+"name": &"collision",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_toon6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v1770")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j8awi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_whgch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7hrak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1tk07")
+}],
+"loop": true,
+"name": &"shooting",
+"speed": 30.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62mbc"]
+radius = 7.01038
+height = 140.0
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_yv6a6")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(120, -2)
+sprite_frames = SubResource("SpriteFrames_1we0m")
+animation = &"shooting"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(196, -2)
+rotation = -1.57603
+shape = SubResource("CapsuleShape2D_62mbc")

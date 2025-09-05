@@ -1,0 +1,75 @@
+[gd_scene load_steps=17 format=3 uid="uid://b1t7jrx2bv1gu"]
+
+[ext_resource type="Texture2D" uid="uid://bqyjh05vbvhgu" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0001.png" id="1_do6t6"]
+[ext_resource type="Script" uid="uid://b8d7jf6x45cql" path="res://enemies/enemy.gd" id="1_om2kw"]
+[ext_resource type="Texture2D" uid="uid://bqxg6wf3qhx02" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0002.png" id="2_om2kw"]
+[ext_resource type="Texture2D" uid="uid://dxf4xt3vdad4l" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0003.png" id="3_12ina"]
+[ext_resource type="Texture2D" uid="uid://lx6u7pkwcmxv" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0004.png" id="4_snqd0"]
+[ext_resource type="Texture2D" uid="uid://bn5epd6tq3cao" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0005.png" id="5_05f3x"]
+[ext_resource type="Texture2D" uid="uid://bwh58wtu3a5dm" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0006.png" id="6_y7cap"]
+[ext_resource type="Texture2D" uid="uid://b0um2kwurxtwl" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0007.png" id="7_8gc4u"]
+[ext_resource type="Texture2D" uid="uid://diuuq68cejlb8" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0008.png" id="8_5ub4l"]
+[ext_resource type="Texture2D" uid="uid://difibc35f5sq" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0009.png" id="9_o7mvg"]
+[ext_resource type="Texture2D" uid="uid://b03n18a25s7dv" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0010.png" id="10_caf10"]
+[ext_resource type="Texture2D" uid="uid://bcc3v1b7dk17r" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0011.png" id="11_bn7u4"]
+[ext_resource type="Texture2D" uid="uid://d4iynbos1h4e8" path="res://assets/shots/EX/Idle/crackshot_ex_idle_0012.png" id="12_q0m1h"]
+[ext_resource type="PackedScene" uid="uid://ctwr3562w4h32" path="res://enemies/projectile/Projectile.tscn" id="14_12ina"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wmyv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_do6t6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_om2kw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_12ina")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_snqd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_05f3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y7cap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8gc4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5ub4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o7mvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_caf10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bn7u4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_q0m1h")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucslm"]
+radius = 64.4748
+
+[node name="Enemy" type="Area2D"]
+script = ExtResource("1_om2kw")
+projectile_scene = ExtResource("14_12ina")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8wmyv")
+animation = &"spin"
+frame_progress = 0.454398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ucslm")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnkm3kvayvup"]
+
+[ext_resource type="Script" uid="uid://b47uey5t1q75i" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bwuy4tpey2tb1" path="res://assets/cuphead-floor/3B_desert_loop.png" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cdb33ohbnph78" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dl0nspmvka7jc" path="res://assets/cuphead-backgrounds/bg_far_sky.png" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b1t7jrx2bv1gu" path="res://enemies/Enemy.tscn" id="5_lquwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(2123, 58)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0xm2m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -551.0
+offset_top = -4.0
+offset_right = 1497.0
+offset_bottom = 620.0
+texture = ExtResource("2_lquwl")
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(457, 555)
+texture = ExtResource("2_1bvp3")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-0.5, 59)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Player" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(417, 545)
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(572, 324)
+
+[node name="Enemy" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(279, 91)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://mpn3vqlh4d3k"]
+
+[ext_resource type="Texture2D" uid="uid://dnd2cb6jdlxvm" path="res://assets/cuphead-character/Arm/arm.png" id="1_5qy1j"]
+[ext_resource type="Script" uid="uid://7o3203fkcvtp" path="res://arm.gd" id="1_m8ymp"]
+
+[node name="Arm" type="Node2D"]
+script = ExtResource("1_m8ymp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(36, -2)
+rotation = 1.55683
+scale = Vector2(1.02041, 1.00909)
+texture = ExtResource("1_5qy1j")
