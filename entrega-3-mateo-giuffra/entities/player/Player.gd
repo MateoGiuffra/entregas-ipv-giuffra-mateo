@@ -28,6 +28,7 @@ func cannon_fire():
 		
 func player_movement():
 	# Player movement
+	
 	if Input.is_action_just_pressed("jump") and is_on_floor(): 
 		velocity.y = -JUMP_SPEED
 	
