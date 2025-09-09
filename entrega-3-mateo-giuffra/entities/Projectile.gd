@@ -20,8 +20,8 @@ func _physics_process(delta):
 	
 	# Si está fuera de la pantalla
 	var visible_rect:Rect2 = get_viewport().get_visible_rect()
-	if !visible_rect.has_point(global_position):
-		_remove()
+	#if !visible_rect.has_point(global_position):
+		#_remove()
 
 # Si supero una cantidad de tiempo de vida
 func _on_lifetime_timer_timeout():
