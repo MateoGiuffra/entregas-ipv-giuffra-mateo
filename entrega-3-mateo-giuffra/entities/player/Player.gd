@@ -1,12 +1,12 @@
 extends CharacterBody2D 
 
 @onready var cannon: Node = $Cannon
-
 @export var ACCELERATION: float = 20.0
 @export var H_SPEED_LIMIT: float = 600.0
 @export var FRICTION_WEIGHT: float = 0.1
 @export var GRAVITY:float = 15.0 
 @export var JUMP_SPEED: float = 500.9
+signal shot
 
 var projectile_container: Node
 
@@ -52,3 +52,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY
 	move_and_slide()
 	
+
+func _on_shot() -> void:
+	print("mori...")
+	#queue_free()
