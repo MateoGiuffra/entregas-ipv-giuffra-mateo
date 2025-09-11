@@ -22,7 +22,6 @@ func fire_at_player() -> void:
 	)
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	print(body)
 	target = body 
 	fire_timer.connect("timeout", fire_at_player)
 	fire_timer.start() 

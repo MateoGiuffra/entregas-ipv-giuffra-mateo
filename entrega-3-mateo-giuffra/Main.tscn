@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnc5muoeyfwah"]
+[gd_scene load_steps=8 format=3 uid="uid://y8it43i21bwp"]
 
 [ext_resource type="PackedScene" uid="uid://buqawojqaqvj" path="res://entities/player/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
-[ext_resource type="Script" uid="uid://bkmvt4ya2xfm8" path="res://Main.gd" id="3"]
+[ext_resource type="Script" path="res://Main.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="4"]
 [ext_resource type="Script" uid="uid://ertnqm8kd3lw" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://b8foqtxsro763" path="res://world/Floor.tscn" id="6_3dxm6"]
