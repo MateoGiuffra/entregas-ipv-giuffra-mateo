@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bldk22e4f5kb1"]
+
+[ext_resource type="Texture2D" uid="uid://fklg0e77oeev" path="res://assets/textures/tileset/Dungeon Ruins Tileset Day.png" id="1_tkcqe"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(117, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cbh8"]
+atlas = ExtResource("1_tkcqe")
+region = Rect2(192.08, 79.7365, 80.5228, 7.18176)
+margin = Rect2(0, 0, 0, 1)
+
+[node name="Platform" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 4)
+shape = SubResource("1")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.899995, 4.5)
+scale = Vector2(1.4775, 1.125)
+texture = SubResource("AtlasTexture_1cbh8")

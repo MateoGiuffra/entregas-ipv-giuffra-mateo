@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://22mlxu8p1pyp"]
+
+[ext_resource type="PackedScene" uid="uid://cgadr55reetnl" path="res://src/entities/Projectile.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cr66d82f57710" path="res://assets/579.png" id="2_uid2m"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2gel"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bca4c"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epysu"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw21e"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s2hk"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1c0f"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uheq"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u54w"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36jaj"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(512, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgqbs"]
+atlas = ExtResource("2_uid2m")
+region = Rect2(576, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uid2m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2gel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bca4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epysu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw21e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s2hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1c0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uheq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u54w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36jaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgqbs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="TurretProjectile" instance=ExtResource("1")]
+VELOCITY = 250.0
+
+[node name="LifetimeTimer" parent="." index="0"]
+wait_time = 3.0
+
+[node name="Hitbox" parent="." index="1"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_uid2m")
+animation = &"idle"
