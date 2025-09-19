@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 ## El uso de "%path" es un shorthand para acceder a los "Nodos Unicos de Escena"
 ## El nodo "Weapon" está marcado como un "Nodo Único de Escena", es decir, es el
-## único nodo en la escena actual que se llama así, por lo que si se hace una query del
-## mismo utilizando este patrón, se puede acceder a él de manera dinámica sin
-## importar su ubicación en el árbol, es decir, ya no se tiene que especificar una
-## ruta estática al mismo.
+## único nodo en la escena actual que se llama así, por lo que si se hace una
+## query del mismo utilizando este patrón, se puede acceder a él de manera dinámica
+## sin importar su ubicación en el árbol, es decir, ya no se tiene que especificar
+## una ruta estática al mismo.
 ## https://docs.godotengine.org/es/stable/tutorials/scripting/scene_unique_nodes.html
 @onready var weapon: Node = $"%Weapon"
 
@@ -29,7 +29,6 @@ func _ready() -> void:
 	initialize()
 	
 
-
 func initialize(projectile_container: Node = get_parent()) -> void:
 	self.projectile_container = projectile_container
 	weapon.projectile_container = projectile_container
@@ -42,7 +41,9 @@ func _physics_process(delta: float) -> void:
 	# Apply velocity
 	## Si estoy muerto solo aplico fricción para que no se deslice como cubito de hielo
 	## Multiplicamos por delta para que sea independiente del framerate
-	if !dead && h_movement_direction != 0:
+	if dead:
+		velocity.x = lerp(velocity.x, 0.0, FRICTION_WEIGHT * delta)
+	elif h_movement_direction != 0:
 		velocity.x = clamp(
 			velocity.x + (h_movement_direction * ACCELERATION * delta),
 			-H_SPEED_LIMIT,
@@ -54,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Jump
 	# NO multiplicamos por delta ya que se aplica una sola vez
-	if jump and is_on_floor():
+	if jump and is_on_floor() and !dead:
 		velocity.y -= jump_speed
 	
 	# Gravity
@@ -73,16 +74,15 @@ func _physics_process(delta: float) -> void:
 				-collision_normal.slerp(-velocity.normalized(), 0.5) * push_force * velocity_alignment
 			)
 	
-	
-	if !is_on_floor():
+	if dead:
+		_play_animation("die")
+	elif !is_on_floor():
 		if velocity.y > 0:
 			_play_animation("down")
 		else: 
 			_play_animation("jump")
 	elif h_movement_direction != 0: 
 		_play_animation("walk")	
-	elif dead:
-		_play_animation("die")
 	else:  
 		_play_animation("idle")
 	
@@ -122,10 +122,11 @@ func _remove() -> void:
 	collision_layer = 0
 
 func _on_body_animation_finished() -> void:
-	_remove.call_deferred()
+	if body.animation == "die":
+		_remove.call_deferred()
 
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
 func _play_animation(animation: String) -> void:
 	if body.sprite_frames.has_animation(animation):
-			body.play(animation)
+		body.play(animation)
