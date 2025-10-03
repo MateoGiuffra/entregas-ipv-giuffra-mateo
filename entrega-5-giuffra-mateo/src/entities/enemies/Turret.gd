@@ -9,8 +9,14 @@ class_name EnemyTurret
 @export var speed: float = 10.0
 @export var max_speed: float = 100.0
 @export var pathfinding_stop_threshold: float = 5.0
+
 @export var projectile_scene: PackedScene
-@export var pathfinding: PathfindAstar
+
+
+@export var pathfinding_path: NodePath
+var pathfinding: PathfindAstar
+
+
 @onready var idle_timer: Timer = $IdleTimer
 
 var path: Array = []
@@ -22,6 +28,7 @@ var dead: bool = false
 func _ready() -> void:
 	fire_timer.timeout.connect(fire)
 	_play_animation(&"idle")
+	pathfinding = get_node_or_null(pathfinding_path)
 
 
 func initialize(turret_pos: Vector2, _projectile_container: Node) -> void:
@@ -48,7 +55,6 @@ func _physics_process(_delta: float) -> void:
 	if dead:
 		return
 	
-	# Lógica de disparo con raycast
 	if target != null: 
 		raycast.set_target_position(raycast.to_local(target.global_position))
 		if raycast.is_colliding() and raycast.get_collider() == target:
@@ -59,7 +65,6 @@ func _physics_process(_delta: float) -> void:
 		elif !fire_timer.is_stopped():
 			fire_timer.stop()
 		
-	# Lógica de movimiento por pathfinding
 	if !path.is_empty():
 		var next_point: Vector2 = path.front()
 		
@@ -74,7 +79,6 @@ func _physics_process(_delta: float) -> void:
 				break
 			next_point = path.front()
 	else: 
-		# Flip del sprite hacia el target
 		if target != null:
 			body_anim.flip_h = raycast.target_position.x < 0
 	
@@ -136,4 +140,3 @@ func _on_idle_timer_timeout() -> void:
 			randf_range(-radius.y, radius.y)
 		)
 		path = pathfinding.get_simple_path(global_position, random_target)
-		print("Nuevo path generado: ", path)
