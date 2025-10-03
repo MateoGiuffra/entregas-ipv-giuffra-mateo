@@ -129,18 +129,34 @@ zoom_speed = 1.0
 
 [node name="Turret" parent="Environment/Entities/Enemies" node_paths=PackedStringArray("pathfinding") instance=ExtResource("9")]
 position = Vector2(1801, 211)
+radius = null
+speed = null
+max_speed = null
+pathfinding_stop_thrshold = null
 pathfinding = NodePath("../AstarTilemap")
 
 [node name="Turret" parent="Environment/Entities/Enemies/Turret" node_paths=PackedStringArray("pathfinding") instance=ExtResource("9")]
 position = Vector2(1801, 211)
+radius = null
+speed = null
+max_speed = null
+pathfinding_stop_thrshold = null
 pathfinding = NodePath("../../AstarTilemap")
 
 [node name="Turret2" parent="Environment/Entities/Enemies" node_paths=PackedStringArray("pathfinding") instance=ExtResource("9")]
 position = Vector2(2, 428)
+radius = null
+speed = null
+max_speed = null
+pathfinding_stop_thrshold = null
 pathfinding = NodePath("../AstarTilemap")
 
 [node name="Turret" parent="Environment/Entities/Enemies/Turret2" node_paths=PackedStringArray("pathfinding") instance=ExtResource("9")]
 position = Vector2(1801, 211)
+radius = null
+speed = null
+max_speed = null
+pathfinding_stop_thrshold = null
 pathfinding = NodePath("../../AstarTilemap")
 
 [node name="TurretsSpawner" type="Marker2D" parent="Environment/Entities/Enemies"]
