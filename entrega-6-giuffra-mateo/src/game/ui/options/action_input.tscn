@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyb501xjxxews"]
+
+[ext_resource type="Script" uid="uid://d2w67yff04hjg" path="res://src/game/ui/options/action_input.gd" id="1_qkva8"]
+
+[node name="ActionInput" type="HBoxContainer"]
+script = ExtResource("1_qkva8")
+
+[node name="Input" type="Label" parent="."]
+layout_mode = 2
+text = "A"
+
+[node name="Action" type="Label" parent="."]
+layout_mode = 2
+text = "Move Left"
