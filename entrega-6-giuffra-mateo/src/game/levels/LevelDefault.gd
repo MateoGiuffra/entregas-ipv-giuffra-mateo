@@ -35,3 +35,7 @@ func _on_return_requested() -> void:
 
 func _on_restart_requested() -> void:
 	restart_requested.emit()
+
+
+func _on_return_button_pressed() -> void:
+	pass # Replace with function body.
